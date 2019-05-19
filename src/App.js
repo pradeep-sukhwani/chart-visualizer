@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import NavBar from './components/navBar'
+import CountryData from './components/countryData';
+import GameData from './components/gameData';
+import GameAndCountryData from './components/gameAndCountry';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="container">
+                <div className='row'>
+                    <div className='col'>
+                        <NavBar/>
+                        <Switch>
+                            <Route path='/country-data' component={CountryData}/>
+                            <Route path='/game-data' component={GameData}/>
+                            <Route path='/game-country-data' component={GameAndCountryData}/>
+                        </Switch>
+                    </div>
+                </div>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
