@@ -23,6 +23,7 @@ class CountryData extends GraphData {
                     title: {
                         text: 'REVENUE'
                     },
+                    categories: this.getLocalStorageData()[0],
                 },
                 series: this.getLocalStorageData()[2],
                 plotOptions: {

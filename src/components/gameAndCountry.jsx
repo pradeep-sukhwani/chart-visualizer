@@ -23,6 +23,7 @@ class GameAndCountryData extends GraphData {
                     title: {
                         text: 'REVENUE'
                     },
+                    categories: this.getLocalStorageData()[6]
                 },
                 series: this.getLocalStorageData()[4],
                 plotOptions: {

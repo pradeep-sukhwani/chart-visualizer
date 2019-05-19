@@ -43,6 +43,9 @@ class GraphData extends React.Component {
     }
 
     getLocalStorageData(){
+        if (!localStorage.getItem('data')){
+            return []
+        }
         let data = localStorage.getItem('data').split("\n");
         let date = [];
         let dates = [];
@@ -65,12 +68,8 @@ class GraphData extends React.Component {
             if (!gameID || gameID.indexOf(currentArr[1]) === -1) {
                 gameID.push(currentArr[1])
             }
-
+            date.push(this.formatDate(currentArr[0]));
             // Dates
-            if (currentArr[0].length === 8 && dates.indexOf(currentArr[0]) === -1) {
-                dates.push(currentArr[0]);
-                date.push(this.formatDate(currentArr[0]))
-            }
 
             // Country Revenue Data
             if (countryRevenueData['name'] === currentArr[2]){
@@ -116,6 +115,7 @@ class GraphData extends React.Component {
                     title: {
                         text: 'REVENUE'
                     },
+                    categories: this.getLocalStorageData()[0]
                 },
                 series: this.getLocalStorageData()[2],
             }
@@ -130,6 +130,7 @@ class GraphData extends React.Component {
                     title: {
                         text: 'DAU'
                     },
+                    categories: this.getLocalStorageData()[0]
                 },
                 series: this.getLocalStorageData()[3],
             }
@@ -144,6 +145,7 @@ class GraphData extends React.Component {
                     title: {
                         text: 'REVENUE'
                     },
+                    categories: this.getLocalStorageData()[6]
                 },
                 series: this.getLocalStorageData()[4],
             }
@@ -158,6 +160,7 @@ class GraphData extends React.Component {
                     title: {
                         text: 'DAU'
                     },
+                    categories: this.getLocalStorageData()[6]
                 },
                 series: this.getLocalStorageData()[5],
             }
